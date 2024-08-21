@@ -9,6 +9,24 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
+		<form action="/guestbook3/delete" method="get">
+			<table>
+				<tr>
+					<td>비밀번호</td>
+					<td><input type="password" name="password"></td>
+					
+					<input type="hidden" name="no" value="${guestVo.no}">
+					<!-- <input type="hidden" name="action" value="delete">  -->
+					
+					<td><button type="submit">삭제</button></td>
+				</tr>
+			</table>
+		</form>
+
+		<br><br>
+
+		<a href="/guestbook3/list">메인으로 돌아가기</a>
 
 </body>
 </html>
