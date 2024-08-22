@@ -1,6 +1,7 @@
 package com.javaex.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +15,53 @@ public class GuestbookDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	// 리스트 (등록폼)
-	public List<GuestVo> getPersonList() {
-			
-		System.out.println("GuestbookDao.getPersonList()");
-			
-		List<GuestVo> personList = sqlSession.selectList("guestbook.selectList");
-			
-		System.out.println("===============");
-		System.out.println(personList);
-		System.out.println("===============");
-		
-		return personList;
-		
+	/* 리스트 (등록폼) */
+	public List<GuestVo> getGuestList() {
+
+		System.out.println("GuestbookDao.getGuestList()");
+
+		List<GuestVo> guestList = sqlSession.selectList("guestbook.selectList");
+
+		return guestList;
+
 	}
+
+	/* 등록 */
+	public int insertGuest(GuestVo guestVo) {
+		System.out.println("GuestbookDao.insertGuest()");
+
+		int count = sqlSession.insert("guestbook.insert", guestVo);
+		return count;
+	}
+
+	/* 사람 1명 정보 가져오기 */
+	public GuestVo getGuestOne(int no) {
+
+		System.out.println("GuestbookDao.getGuestOne()");
+
+		GuestVo guestVo = sqlSession.selectOne("guestbook.selectOne", no);
+
+		System.out.println(guestVo);
+
+		return guestVo;
+
+	}
+	
+	/* 삭제 */
+	public Map<String, Object> deleteGuest(GuestVo guestVo) {
+		System.out.println("GuestbookDao.deleteGuest()");
+
+		Map<String, Object> guestMap = sqlSession.delete("guestbook.delete", guestVo);
+//		guestMap.put("no", no);
+//		guestMap.put("password", password);
+//
+//		
+//		int count = sqlSession.delete("guestbook.delete", guestMap);
+
+		return guestMap;
+	}
+	
+	
+	
+	
 }

@@ -5,13 +5,10 @@
 <configuration>
 
 	<typeAliases>
-
 	</typeAliases>
 
 	<mappers>
-
 		<mapper resource="mybatis/mappers/guestbook.xml" />
-
 	</mappers>
 
 </configuration>
