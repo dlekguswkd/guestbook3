@@ -24,7 +24,7 @@ public class GuestbookController {
 	// 생성자
 	// 메서드 gs
 
-	// http://localhost:8888/guestbook3/list
+	// http://localhost:8888/guestbook3/addlist
 	/* 리스트 (등록폼)*/
 	@RequestMapping(value="/addlist", method= {RequestMethod.GET, RequestMethod.POST})
 	public String list(Model model) {
@@ -81,7 +81,7 @@ public class GuestbookController {
 		System.out.println(count);
 
 		
-		return "redirect:/list";
+		return "redirect:/addlist";
 	} 
 	
 	

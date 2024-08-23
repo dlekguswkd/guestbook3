@@ -48,17 +48,13 @@ public class GuestbookDao {
 	}
 	
 	/* 삭제 */
-	public Map<String, Object> deleteGuest(GuestVo guestVo) {
+	public int deleteGuest(int no, String password) {
 		System.out.println("GuestbookDao.deleteGuest()");
 
-		Map<String, Object> guestMap = sqlSession.delete("guestbook.delete", guestVo);
-//		guestMap.put("no", no);
-//		guestMap.put("password", password);
-//
-//		
-//		int count = sqlSession.delete("guestbook.delete", guestMap);
+		GuestVo guestVo = new GuestVo(no, password);
+		int count = sqlSession.delete("guestbook.delete", guestVo);
 
-		return guestMap;
+		return count;
 	}
 	
 	
